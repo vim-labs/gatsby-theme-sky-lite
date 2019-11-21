@@ -22,6 +22,14 @@ module.exports = {
         name: `markdown-posts`,
         path: `src/content/posts`
       }
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Roboto"]
+        }
+      }
     }
   ]
 };

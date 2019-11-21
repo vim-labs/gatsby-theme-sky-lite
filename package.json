@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-sky-lite",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "author": "Ryan Bell <ryanbell@gmail.com> (@iRyanBell)",
   "license": "MIT",
@@ -12,6 +12,7 @@
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-mdx": "^1.0.57",
     "gatsby-plugin-sharp": "^2.3.2",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.1.38",
     "gatsby-transformer-remark": "^2.6.37",
     "gatsby-transformer-sharp": "^2.3.5",
