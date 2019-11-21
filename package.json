@@ -24,6 +24,10 @@
     "gatsby-plugin",
     "gatsby-theme"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vim-labs/gatsby-theme-sky-lite.git"
+  },
   "bugs": {
     "url": "https://github.com/vim-labs/gatsby-theme-sky-lite/issues"
   },
