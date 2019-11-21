@@ -1,0 +1,31 @@
+{
+  "name": "gatsby-theme-sky-lite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ryan Bell <ryanbell@gmail.com> (@iRyanBell)",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.6.1",
+    "@mdx-js/mdx": "^1.5.1",
+    "@mdx-js/react": "^1.5.1",
+    "gatsby-image": "^2.2.33",
+    "gatsby-plugin-mdx": "^1.0.57",
+    "gatsby-plugin-sharp": "^2.3.2",
+    "gatsby-source-filesystem": "^2.1.38",
+    "gatsby-transformer-remark": "^2.6.37",
+    "gatsby-transformer-sharp": "^2.3.5",
+    "moment": "^2.24.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.8.0",
+    "yarn": "^1.19.1"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "bugs": {
+    "url": "https://github.com/vim-labs/gatsby-theme-sky-lite/issues"
+  },
+  "homepage": "https://github.com/vim-labs/gatsby-theme-sky-lite#readme"
+}
