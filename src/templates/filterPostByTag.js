@@ -105,7 +105,8 @@ const IndexPage = ({
                 variant="h3"
                 style={{
                   fontWeight: "bold",
-                  fontFamily: "Work Sans",
+                  fontFamily:
+                    "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
                   marginBottom: 4
                 }}
               >

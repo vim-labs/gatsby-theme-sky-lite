@@ -11,7 +11,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const useStyles = makeStyles(theme => ({
   article: {
     lineHeight: 1.6,
-    fontFamily: "Merriweather",
+    fontFamily: "Merriweather, Georgia, serif",
     fontSize: "1.1rem",
     "& blockquote": {
       borderLeft: "3px solid #303032",
@@ -61,7 +61,13 @@ export default function TemplatePost({ data, pageContext }) {
       <Box flexGrow={1} width="100%" maxWidth={960} marginX="auto">
         <Box padding={2}>
           <Box marginBottom={1}>
-            <Typography variant="h4" style={{ fontFamily: "Work Sans" }}>
+            <Typography
+              variant="h4"
+              style={{
+                fontFamily:
+                  "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif"
+              }}
+            >
               {title}
             </Typography>
             <Typography variant="body2">

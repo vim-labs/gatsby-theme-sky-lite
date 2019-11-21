@@ -68,7 +68,7 @@ const Posts = ({ posts, pathPrefix }) => {
                     variant="body2"
                     color="textSecondary"
                     component="p"
-                    style={{ fontFamily: "Merriweather" }}
+                    style={{ fontFamily: "Merriweather, Georgia, serif" }}
                   >
                     {excerpt}
                   </Typography>
@@ -117,7 +117,8 @@ const IndexPage = ({
                 variant="h2"
                 style={{
                   fontWeight: "bold",
-                  fontFamily: "Work Sans",
+                  fontFamily:
+                    "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
                   marginBottom: 4
                 }}
               >
