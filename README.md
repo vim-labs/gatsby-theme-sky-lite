@@ -1,6 +1,6 @@
 # Gatsby Theme: Sky Lite
 
-A lightweight GatsbyJS starter base with Material-UI and MDX Markdown support.
+A lightweight GatsbyJS theme base with Material-UI and MDX Markdown support.
 
 ## Install
 
