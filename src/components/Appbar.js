@@ -42,7 +42,7 @@ const AppBarLinks = ({ links }) => {
   });
 };
 
-export default ({ onToggleDrawer }) => {
+export default ({ elevation = 1, onToggleDrawer }) => {
   const classes = useStyles();
   const isXs = useMediaQuery(theme => theme.breakpoints.down("xs"));
 
@@ -76,7 +76,7 @@ export default ({ onToggleDrawer }) => {
           }
         }
       }) => (
-        <AppBar position={position}>
+        <AppBar color="primary" position={position} elevation={elevation}>
           <Toolbar>
             {isXs && (
               <IconButton

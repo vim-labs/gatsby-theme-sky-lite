@@ -1,6 +1,6 @@
 import React from "react";
 import path from "path";
-import { Link, graphql } from "gatsby";
+import { Link, graphql, navigate } from "gatsby";
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,9 +14,8 @@ import {
   Grid,
   Typography
 } from "@material-ui/core";
-import theme from "../style/theme";
+import Pagination from "materialui-pagination-component";
 import moment from "moment";
-import { useHasScroll } from "has-scroll-hook";
 
 const useStyles = makeStyles(() => ({
   cardActions: {
@@ -26,7 +25,7 @@ const useStyles = makeStyles(() => ({
     background: "transparent"
   },
   cardContent: {
-    padding: "8px 0"
+    padding: 12
   }
 }));
 
@@ -56,24 +55,22 @@ const Posts = ({ posts, pathPrefix }) => {
                   style={{ borderRadius: 2 }}
                 />
                 <CardContent classes={{ root: classes.cardContent }}>
-                  <Box>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      style={{
-                        marginBottom: 0,
-                        fontWeight: 600,
-                        fontFamily:
-                          "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
-                        lineHeight: 1.25
-                      }}
-                    >
-                      {title}
-                    </Typography>
-                    <Typography variant="caption" color="textSecondary">
-                      {moment(postDate).format("LL")}
-                    </Typography>
-                  </Box>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    style={{
+                      marginBottom: 0,
+                      fontWeight: 600,
+                      fontFamily:
+                        "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
+                      lineHeight: 1.25
+                    }}
+                  >
+                    {title}
+                  </Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    {moment(postDate).format("LL")}
+                  </Typography>
                   <Box marginY={1}>
                     <Divider light />
                   </Box>
@@ -105,76 +102,63 @@ const Posts = ({ posts, pathPrefix }) => {
   );
 };
 
-export default function HomeTemplate({
+export default function ResultsTagTemplate({
   data: {
     site: {
       siteMetadata: {
-        title,
-        description,
         templates: {
-          posts: { pathPrefix }
+          posts: {
+            filters: {
+              tag: {
+                pathPrefix,
+                pagination: { resultsPerPage }
+              }
+            }
+          }
         }
       }
     },
     allMdx: { edges: posts }
-  }
+  },
+  pageContext: { tag, totalPages, currentPage }
 }) {
-  /* Get the vertical scrollbar offset as a boolean value. */
-  const hasScroll = useHasScroll();
-
   return (
-    <Layout elevateAppBar={hasScroll}>
-      <Box display="flex" flexDirection="column">
-        <Box
-          textAlign="center"
-          paddingTop={4}
-          paddingBottom={12}
-          paddingX={8}
-          style={{
-            backgroundColor: theme.palette.primary.main,
-            color: theme.palette.common.white,
-            clipPath: "polygon(0 0, 100% 0, 100% 60%, 0% 100%)"
-          }}
-        >
-          <Box marginBottom={4}>
-            <Typography
-              color="inherit"
-              variant="h2"
-              style={{
-                fontWeight: "bold",
-                fontFamily:
-                  "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
-                marginBottom: 4
-              }}
-            >
-              {title}
-            </Typography>
-            <Typography color="inherit" variant="body1">
-              {description}
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-      <Box flexGrow={1} marginX="auto" width="100%" maxWidth={960}>
+    <Layout>
+      <Box flexGrow={1} width="100%" maxWidth={960} marginX="auto">
         <Box padding={2}>
-          <Posts posts={posts} pathPrefix={pathPrefix} />
-          {posts.length > 1 && (
-            <Box
-              display="flex"
-              justifyContent="flex-end"
-              padding={1}
-              marginTop={1}
-            >
-              <Button
-                variant="contained"
-                color="secondary"
+          <Box textAlign="center" padding={4}>
+            <Box marginBottom={4}>
+              <Typography
+                color="primary"
+                variant="h3"
                 component={Link}
-                to={`/${pathPrefix}/page/1`}
+                style={{
+                  fontWeight: "bold",
+                  fontFamily:
+                    "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
+                  marginBottom: 4,
+                  textDecoration: "none"
+                }}
               >
-                View All
-              </Button>
+                #{tag}
+              </Typography>
             </Box>
-          )}
+            <Divider variant="middle" />
+          </Box>
+          <Posts posts={posts} pathPrefix={pathPrefix} />
+          <Typography
+            variant="caption"
+            color="textSecondary"
+            style={{ display: "block", marginTop: 32, marginBottom: 4 }}
+          >
+            Select page:
+          </Typography>
+          <Pagination
+            selectVariant="tab"
+            page={currentPage}
+            totalPages={Math.ceil(totalPages / resultsPerPage)}
+            onChange={page => navigate(`/${pathPrefix}/${tag}/page/${page}`)}
+          />
         </Box>
       </Box>
     </Layout>
@@ -182,22 +166,31 @@ export default function HomeTemplate({
 }
 
 export const pageQuery = graphql`
-  query($limit: Int!) {
+  query($skip: Int!, $limit: Int!, $tag: String!) {
     site {
       siteMetadata {
-        title
-        description
         templates {
           posts {
-            pathPrefix
+            filters {
+              tag {
+                pathPrefix
+                pagination {
+                  resultsPerPage
+                }
+              }
+            }
           }
         }
       }
     }
     allMdx(
-      filter: { fileAbsolutePath: { regex: "/content/posts/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/posts/" }
+        frontmatter: { tags: { in: [$tag] } }
+      }
       sort: { order: DESC, fields: [fileAbsolutePath] }
       limit: $limit
+      skip: $skip
     ) {
       edges {
         node {

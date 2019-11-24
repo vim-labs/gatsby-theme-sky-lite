@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Container, Grid, Typography } from "@material-ui/core";
 import Link from "../components/Link";
 
 const useStyles = makeStyles(theme => ({
@@ -87,7 +87,7 @@ export default () => {
       }) => {
         return (
           <Box component="footer" classes={{ root: classes.footer }}>
-            <Box flexGrow={1} width="100%" maxWidth={960} marginX="auto">
+            <Container maxWidth="md">
               <Box padding={4}>
                 <FooterColumns columns={columns} />
                 <Box textAlign="center" marginTop={2}>
@@ -96,7 +96,7 @@ export default () => {
                   </Typography>
                 </Box>
               </Box>
-            </Box>
+            </Container>
           </Box>
         );
       }}

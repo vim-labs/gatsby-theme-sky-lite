@@ -19,6 +19,12 @@ import moment from "moment";
 const useStyles = makeStyles(() => ({
   cardActions: {
     justifyContent: "flex-end"
+  },
+  card: {
+    background: "transparent"
+  },
+  cardContent: {
+    padding: "8px 0"
   }
 }));
 
@@ -26,7 +32,7 @@ const Posts = ({ posts, pathPrefix }) => {
   const classes = useStyles();
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={3}>
       {posts.map(
         ({
           node: {
@@ -42,22 +48,36 @@ const Posts = ({ posts, pathPrefix }) => {
             .join("-");
           return (
             <Grid item xs={12} sm={4} key={id}>
-              <Card>
+              <Card elevation={0} classes={{ root: classes.card }}>
                 <Img
                   fluid={featuredImage.childImageSharp.fluid}
                   style={{ borderRadius: 2 }}
                 />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                <CardContent classes={{ root: classes.cardContent }}>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    style={{
+                      marginBottom: 0,
+                      fontWeight: 600,
+                      fontFamily:
+                        "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
+                      lineHeight: 1.25
+                    }}
+                  >
                     {title}
                   </Typography>
-                  <Typography variant="caption">
+                  <Typography variant="caption" color="textSecondary">
                     {moment(postDate).format("LL")}
                   </Typography>
+                  <Box marginY={1}>
+                    <Divider light />
+                  </Box>
                   <Typography
-                    variant="body2"
+                    variant="subtitle2"
                     color="textSecondary"
                     component="p"
+                    style={{ fontFamily: "Merriweather, Georgia, serif" }}
                   >
                     {excerpt}
                   </Typography>
@@ -66,7 +86,7 @@ const Posts = ({ posts, pathPrefix }) => {
                   <Button
                     component={Link}
                     to={`${pathPrefix}/${id}`}
-                    variant="contained"
+                    variant="outlined"
                     color="secondary"
                   >
                     Read More
@@ -81,19 +101,24 @@ const Posts = ({ posts, pathPrefix }) => {
   );
 };
 
-const IndexPage = ({
+export default function TagTemplate({
   data: {
     site: {
       siteMetadata: {
         templates: {
-          posts: { pathPrefix }
+          posts: {
+            pathPrefix,
+            filters: {
+              tag: { pathPrefix: pathPrefixTag }
+            }
+          }
         }
       }
     },
     allMdx: { edges: posts }
   },
   pageContext: { tag }
-}) => {
+}) {
   return (
     <Layout>
       <Box flexGrow={1} width="100%" maxWidth={960} marginX="auto">
@@ -103,26 +128,43 @@ const IndexPage = ({
               <Typography
                 color="primary"
                 variant="h3"
+                component={Link}
                 style={{
                   fontWeight: "bold",
                   fontFamily:
                     "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
-                  marginBottom: 4
+                  marginBottom: 4,
+                  textDecoration: "none"
                 }}
               >
-                {tag}
+                #{tag}
               </Typography>
             </Box>
             <Divider variant="middle" />
           </Box>
           <Posts posts={posts} pathPrefix={pathPrefix} />
+          {posts.length > 1 && (
+            <Box
+              display="flex"
+              justifyContent="flex-end"
+              padding={1}
+              marginTop={1}
+            >
+              <Button
+                variant="contained"
+                color="secondary"
+                component={Link}
+                to={`/${pathPrefixTag}/${tag}/page/1`}
+              >
+                View All
+              </Button>
+            </Box>
+          )}
         </Box>
       </Box>
     </Layout>
   );
-};
-
-export default IndexPage;
+}
 
 export const pageQuery = graphql`
   query($tag: String!, $limit: Int!) {
@@ -131,6 +173,11 @@ export const pageQuery = graphql`
         templates {
           posts {
             pathPrefix
+            filters {
+              tag {
+                pathPrefix
+              }
+            }
           }
         }
       }

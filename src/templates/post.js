@@ -8,7 +8,7 @@ import moment from "moment";
 import { Box, Button, Chip, Typography } from "@material-ui/core";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   article: {
     lineHeight: 1.6,
     fontFamily: "Merriweather, Georgia, serif",
@@ -34,6 +34,7 @@ const Tags = ({ tags }) => {
         return (
           <Chip
             color="primary"
+            variant="outlined"
             classes={{ root: classes.chip }}
             label={tag}
             key={tag}
@@ -47,7 +48,7 @@ const Tags = ({ tags }) => {
   );
 };
 
-export default function TemplatePost({ data, pageContext }) {
+export default function PostTemplate({ data, pageContext }) {
   const classes = useStyles();
   const { mdx } = data;
   const {
@@ -88,7 +89,7 @@ export default function TemplatePost({ data, pageContext }) {
                 <Button
                   component={Link}
                   to={previousPath}
-                  variant="contained"
+                  variant="outlined"
                   color="secondary"
                 >
                   <FaChevronLeft size={8} />
@@ -100,7 +101,7 @@ export default function TemplatePost({ data, pageContext }) {
               <Button
                 component={Link}
                 to={nextPath}
-                variant="contained"
+                variant="outlined"
                 color="secondary"
               >
                 <Box marginRight={0.5}>Next</Box>

@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function TemplatePost({ data }) {
+export default function PageTemplate({ data }) {
   const classes = useStyles();
   const { mdx } = data;
   const {
