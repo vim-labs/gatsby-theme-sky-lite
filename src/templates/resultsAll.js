@@ -128,7 +128,7 @@ export default function ResultsAllTemplate({
             Select page:
           </Typography>
           <Pagination
-            selectVariant="button"
+            selectVariant="tab"
             page={currentPage}
             totalPages={totalPages}
             onChange={page => navigate(`/${pathPrefix}/page/${page}`)}
