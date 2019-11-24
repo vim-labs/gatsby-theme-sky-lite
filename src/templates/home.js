@@ -89,7 +89,7 @@ const Posts = ({ posts, pathPrefix }) => {
                 <CardActions classes={{ root: classes.cardActions }}>
                   <Button
                     component={Link}
-                    to={`${pathPrefix}/${id}`}
+                    to={`/${pathPrefix}/${id}`}
                     variant="outlined"
                     color="secondary"
                   >
