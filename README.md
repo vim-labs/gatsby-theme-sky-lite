@@ -2,6 +2,9 @@
 
 A lightweight GatsbyJS theme base with Material-UI and MDX Markdown support.
 
+View Demo:
+https://gatsby-theme-sky-lite.netlify.com
+
 ## Install
 
 ```bash
