@@ -22,5 +22,5 @@ module.exports = {
 
 ## Screenshots
 
-![Screenshot 01](https://user-images.githubusercontent.com/25379378/69301759-30e88480-0bcc-11ea-917d-cf3e50365b61.png)
+![Screenshot 01](https://user-images.githubusercontent.com/25379378/69487861-025dea00-0e16-11ea-99f3-bf59a0cf6d9d.png)
 ![Screenshot 02](https://user-images.githubusercontent.com/25379378/69301760-30e88480-0bcc-11ea-9ba7-5593740590d3.png)
