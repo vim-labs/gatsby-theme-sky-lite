@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-sky-lite",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "index.js",
   "author": "Ryan Bell <ryanbell@gmail.com> (@iRyanBell)",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "gatsby-transformer-remark": "^2.6.37",
     "gatsby-transformer-sharp": "^2.3.5",
     "has-scroll-hook": "^1.0.3",
-    "materialui-pagination-component": "^1.1.8",
+    "materialui-pagination-component": "^1.1.9",
     "moment": "^2.24.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.8.0",
