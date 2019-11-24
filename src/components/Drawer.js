@@ -1,9 +1,8 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import { makeStyles } from "@material-ui/styles";
-import { Box, Drawer, IconButton, Typography } from "@material-ui/core";
+import { Box, Drawer, IconButton, List, ListItem, Typography } from "@material-ui/core";
 import { MdClose } from "react-icons/md";
-import Link from "../components/Link";
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -23,36 +22,6 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-
-const DrawerItems = ({ title, links, onClose }) => {
-  const classes = useStyles();
-
-  return (
-    <Box display="flex" flexDirection="column" padding={1}>
-      <Box display="flex" alignItems="center">
-        <Box flexGrow={1} paddingLeft={1}>
-          <Typography variant="h6" style={{ fontWeight: "bold" }}>
-            {title}
-          </Typography>
-        </Box>
-        <IconButton onClick={onClose}>
-          <MdClose />
-        </IconButton>
-      </Box>
-      <Box padding={1}>
-        <ul className={classes.ul}>
-          {links.map(link => {
-            return (
-              <li key={link.title}>
-                <Link to={link.url}>{link.title}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </Box>
-    </Box>
-  );
-};
 
 export default ({ open, onClose }) => {
   const classes = useStyles();
@@ -91,7 +60,27 @@ export default ({ open, onClose }) => {
           open={open}
           onClose={onClose}
         >
-          <DrawerItems title={title} onClose={onClose} links={links} />
+					<Box display="flex" flexDirection="column" padding={1}>
+						<Box display="flex" alignItems="center">
+							<Box flexGrow={1} paddingLeft={1}>
+								<Typography color='textSecondary' variant="h6" style={{ fontFamily: "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif" }}>
+									{title}
+								</Typography>
+							</Box>
+							<IconButton onClick={onClose}>
+								<MdClose />
+							</IconButton>
+						</Box>
+						<List>
+							{links.map(link => {
+								return (
+									<ListItem button key={link.title} to={link.url} component={Link}>
+										{link.title}
+									</ListItem>
+								);
+							})}
+						</List>
+					</Box>
         </Drawer>
       )}
     />

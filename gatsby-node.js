@@ -107,13 +107,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       const previousPath =
         index === pages.length - 1
           ? null
-          : `${pathPrefix}/${pages[index + 1].node.frontmatter.id}`;
+          : `/${pathPrefix}/${pages[index + 1].node.frontmatter.id}`;
 
       // The path to the next page.
       const nextPath =
         index === 0
           ? null
-          : `${pathPrefix}/${pages[index - 1].node.frontmatter.id}`;
+          : `/${pathPrefix}/${pages[index - 1].node.frontmatter.id}`;
 
       return createPage({
         path: `${pathPrefix}/${postId}`,

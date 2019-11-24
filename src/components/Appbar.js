@@ -21,6 +21,11 @@ const useStyles = makeStyles(theme => ({
     transition: "background-color .125s ease",
     "&:hover": {
       backgroundColor: "rgba(0,0,0,0.25)"
+    },
+    "&:first-child": {
+      // Site title.
+      fontFamily:
+        "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif"
     }
   }
 }));
