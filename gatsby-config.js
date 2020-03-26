@@ -24,11 +24,17 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
-        google: {
-          families: ["Roboto", "Merriweather", "Work Sans:800"]
-        }
+        fonts: [
+          {
+            family: "Roboto"
+          },
+          {
+            family: "Work Sans",
+            variants: ["800"]
+          }
+        ]
       }
     }
   ]
