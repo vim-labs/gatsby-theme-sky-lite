@@ -86,7 +86,7 @@ export default () => {
         }
       }) => {
         return (
-          <Box component="footer" classes={{ root: classes.footer }}>
+          <Box component="footer" className={classes.footer}>
             <Container maxWidth="md">
               <Box padding={4}>
                 <FooterColumns columns={columns} />
