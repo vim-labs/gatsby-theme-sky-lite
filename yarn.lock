@@ -4323,10 +4323,10 @@ markdown-table@^1.1.0:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.3.tgz#9fcb69bcfdb8717bfd0398c6ec2d93036ef8de60"
   integrity sha512-1RUZVgQlpJSPWYbFSpmudq5nHY1doEIv89gBtF0s4gW1GF2XorxcA/70M5vq7rLv0a6mhOUccRsqkwhwLCIQ2Q==
 
-materialui-pagination-component@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/materialui-pagination-component/-/materialui-pagination-component-1.1.4.tgz#106d632181b3f2aa2e15b74f7c371eb90e6d86bf"
-  integrity sha512-+PVUonjwOzyi8pcSw0+Nbu7cp6x3YWjaYRPntHiDUimEMg3wt0zNDLVEuZkli9uKUIBEe5w59HaH2w3N2m2Rtg==
+materialui-pagination-component@^1.1.11:
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/materialui-pagination-component/-/materialui-pagination-component-1.1.12.tgz#fb7c17e7df4b8cd3e2ca1fca873be2890fef9e77"
+  integrity sha512-XdI2cgJxmUfrH4GM9T6F9NnwP57FWXW7nzCki0JyfGzCWHUFBMZDIso0KGaC0ht9UP4q6PgMebHiXVkiAiHOmA==
   dependencies:
     "@material-ui/core" "^4.7.0"
     react "^16.12.0"
@@ -6963,10 +6963,10 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yarn@^1.19.1:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.19.1.tgz#14b92410dd1ba5bab87a12b4a3d807f4569bea97"
-  integrity sha512-gBnfbL9rYY05Gt0cjJhs/siqQXHYlZalTjK3nXn2QO20xbkIFPob+LlH44ML47GcR4VU9/2dYck1BWFM0Javxw==
+yarn@^1.22.0:
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.0.tgz#acf82906e36bcccd1ccab1cfb73b87509667c881"
+  integrity sha512-KMHP/Jq53jZKTY9iTUt3dIVl/be6UPs2INo96+BnZHLKxYNTfwMmlgHTaMWyGZoO74RI4AIFvnWhYrXq2USJkg==
 
 yauzl@^2.4.2:
   version "2.10.0"
