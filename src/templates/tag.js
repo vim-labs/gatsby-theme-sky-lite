@@ -13,8 +13,8 @@ const Posts = ({ posts, pathPrefix }) => {
           node: {
             excerpt,
             fileAbsolutePath,
-            frontmatter: { id, title, featuredImage }
-          }
+            frontmatter: { id, title, featuredImage },
+          },
         }) => {
           const postDate = path
             .basename(fileAbsolutePath)
@@ -46,15 +46,15 @@ export default function TagTemplate({
           posts: {
             pathPrefix,
             filters: {
-              tag: { pathPrefix: pathPrefixTag }
-            }
-          }
-        }
-      }
+              tag: { pathPrefixTag },
+            },
+          },
+        },
+      },
     },
-    allMdx: { edges: posts }
+    allMdx: { edges: posts },
   },
-  pageContext: { tag }
+  pageContext: { tag },
 }) {
   return (
     <Layout>
@@ -70,7 +70,7 @@ export default function TagTemplate({
                   fontFamily:
                     "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
                   marginBottom: 4,
-                  textDecoration: "none"
+                  textDecoration: "none",
                 }}
               >
                 #{tag}
@@ -111,7 +111,7 @@ export const pageQuery = graphql`
             pathPrefix
             filters {
               tag {
-                pathPrefix
+                pathPrefixTag
               }
             }
           }

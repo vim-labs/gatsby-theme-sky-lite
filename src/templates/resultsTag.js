@@ -14,8 +14,8 @@ const Posts = ({ posts, pathPrefix }) => {
           node: {
             excerpt,
             fileAbsolutePath,
-            frontmatter: { id, title, featuredImage }
-          }
+            frontmatter: { id, title, featuredImage },
+          },
         }) => {
           const postDate = path
             .basename(fileAbsolutePath)
@@ -45,19 +45,20 @@ export default function ResultsTagTemplate({
       siteMetadata: {
         templates: {
           posts: {
+            pathPrefix,
             filters: {
               tag: {
-                pathPrefix,
-                pagination: { resultsPerPage }
-              }
-            }
-          }
-        }
-      }
+                pathPrefixTag,
+                pagination: { resultsPerPage },
+              },
+            },
+          },
+        },
+      },
     },
-    allMdx: { edges: posts }
+    allMdx: { edges: posts },
   },
-  pageContext: { tag, totalPages, currentPage }
+  pageContext: { tag, totalPages, currentPage },
 }) {
   return (
     <Layout>
@@ -73,7 +74,7 @@ export default function ResultsTagTemplate({
                   fontFamily:
                     "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
                   marginBottom: 4,
-                  textDecoration: "none"
+                  textDecoration: "none",
                 }}
               >
                 #{tag}
@@ -93,7 +94,9 @@ export default function ResultsTagTemplate({
             selectVariant="tab"
             page={currentPage}
             totalPages={Math.ceil(totalPages / resultsPerPage)}
-            onChange={page => navigate(`/${pathPrefix}/${tag}/page/${page}`)}
+            onChange={(page) =>
+              navigate(`/${pathPrefixTag}/${tag}/page/${page}`)
+            }
           />
         </Box>
       </Box>
@@ -107,9 +110,10 @@ export const pageQuery = graphql`
       siteMetadata {
         templates {
           posts {
+            pathPrefix
             filters {
               tag {
-                pathPrefix
+                pathPrefixTag
                 pagination {
                   resultsPerPage
                 }

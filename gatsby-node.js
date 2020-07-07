@@ -7,9 +7,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const {
     data: {
       site: {
-        siteMetadata: { templates }
-      }
-    }
+        siteMetadata: { templates },
+      },
+    },
   } = await graphql(`
     {
       site {
@@ -29,7 +29,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               template
               filters {
                 tag {
-                  pathPrefix
+                  pathPrefixTag
                   template
                   totalPosts
                   pagination {
@@ -57,7 +57,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     regex,
     template,
     pathPrefix = "",
-    paginate = false
+    paginate = false,
   }) => {
     const result = await graphql(`
 			{
@@ -122,8 +122,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           postId,
           postDate,
           previousPath,
-          nextPath
-        }
+          nextPath,
+        },
       });
     });
 
@@ -141,18 +141,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 limit: templates.posts.pagination.resultsPerPage,
                 skip: i * templates.posts.pagination.resultsPerPage,
                 totalPages,
-                currentPage: i + 1
-              }
+                currentPage: i + 1,
+              },
             })
-          )
+          ),
         ]);
   };
 
   // Find all of the tags used in posts and create search result pages.
   const createPostTagFilterPages = async ({
-    pathPrefix = "",
+    pathPrefixTag = "",
     paginate = false,
-    template
+    template,
   }) => {
     const result = await graphql(`
       {
@@ -175,12 +175,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const tags = result.data.allMdx.group;
     const staticTagPages = tags.map(async ({ tag }) => {
       const staticTagPage = createPage({
-        path: `${pathPrefix}/${tag}`,
+        path: `${pathPrefixTag}/${tag}`,
         component: path.resolve(`${__dirname}/src/templates/${template}.js`),
         context: {
           tag,
-          limit: templates.posts.filters.tag.totalPosts
-        }
+          limit: templates.posts.filters.tag.totalPosts,
+        },
       });
 
       if (!paginate) return staticTagPage;
@@ -211,7 +211,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       const staticTagPagination = Array.from({ length: totalPages }).map(
         (_, i) =>
           createPage({
-            path: `${pathPrefix}/${tag}/page/${i + 1}`,
+            path: `${pathPrefixTag}/${tag}/page/${i + 1}`,
             component: path.resolve(
               `${__dirname}/src/templates/${templates.posts.filters.tag.pagination.template}.js`
             ),
@@ -220,8 +220,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               skip: i * templates.posts.filters.tag.pagination.resultsPerPage,
               totalPages: totalPostsWithTag,
               currentPage: i + 1,
-              tag
-            }
+              tag,
+            },
           })
       );
 
@@ -239,14 +239,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         `${__dirname}/src/templates/${templates.home.template}.js`
       ),
       context: {
-        limit: templates.home.totalPosts
-      }
+        limit: templates.home.totalPosts,
+      },
     }),
 
     // Create the individual content pages for mdx files in src/content/pages.
     createMarkdownPages({
       regex: templates.pages.path,
-      template: templates.pages.template
+      template: templates.pages.template,
     }),
 
     // Create individual blog post pages and paginated results pages for mdx files in src/content/posts.
@@ -254,15 +254,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       regex: templates.posts.path,
       pathPrefix: templates.posts.pathPrefix,
       template: templates.posts.template,
-      paginate: true
+      paginate: true,
     }),
 
     // Create pages for each frontmatter tag used in src/content/posts with paginated result pages.
     createPostTagFilterPages({
       regex: templates.posts.path,
-      pathPrefix: templates.posts.filters.tag.pathPrefix,
+      pathPrefixTag: templates.posts.filters.tag.pathPrefixTag,
       template: templates.posts.filters.tag.template,
-      paginate: true
-    })
+      paginate: true,
+    }),
   ]);
 };

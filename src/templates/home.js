@@ -15,8 +15,8 @@ const Posts = ({ posts, pathPrefix }) => {
           node: {
             excerpt,
             fileAbsolutePath,
-            frontmatter: { id, title, featuredImage }
-          }
+            frontmatter: { id, title, featuredImage },
+          },
         }) => {
           const postDate = path
             .basename(fileAbsolutePath)
@@ -47,12 +47,12 @@ export default function HomeTemplate({
         title,
         description,
         templates: {
-          posts: { pathPrefix }
-        }
-      }
+          posts: { pathPrefix },
+        },
+      },
     },
-    allMdx: { edges: posts }
-  }
+    allMdx: { edges: posts },
+  },
 }) {
   /* Get the vertical scrollbar offset as a boolean value. */
   const hasScroll = useHasScroll();
@@ -69,7 +69,7 @@ export default function HomeTemplate({
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.common.white,
             clipPath: "polygon(0 0, 100% 0, 100% 60%, 0% 100%)",
-            "-webkit-clip-path": "polygon(0 0, 100% 0, 100% 60%, 0% 100%)"
+            WebkitClipPath: "polygon(0 0, 100% 0, 100% 60%, 0% 100%)",
           }}
         >
           <Box marginBottom={4}>
@@ -80,7 +80,7 @@ export default function HomeTemplate({
                 fontWeight: "bold",
                 fontFamily:
                   "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
-                marginBottom: 4
+                marginBottom: 4,
               }}
             >
               {title}
