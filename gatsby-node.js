@@ -29,7 +29,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               template
               filters {
                 tag {
-                  pathPrefixTag
+                  pathPrefix
                   template
                   totalPosts
                   pagination {
@@ -260,7 +260,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     // Create pages for each frontmatter tag used in src/content/posts with paginated result pages.
     createPostTagFilterPages({
       regex: templates.posts.path,
-      pathPrefixTag: templates.posts.filters.tag.pathPrefixTag,
+      pathPrefixTag: templates.posts.filters.tag.pathPrefix,
       template: templates.posts.filters.tag.template,
       paginate: true,
     }),

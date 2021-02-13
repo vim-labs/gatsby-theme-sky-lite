@@ -48,7 +48,7 @@ export default function ResultsTagTemplate({
             pathPrefix,
             filters: {
               tag: {
-                pathPrefixTag,
+                pathPrefix: pathPrefixTag,
                 pagination: { resultsPerPage },
               },
             },
@@ -113,7 +113,7 @@ export const pageQuery = graphql`
             pathPrefix
             filters {
               tag {
-                pathPrefixTag
+                pathPrefix
                 pagination {
                   resultsPerPage
                 }

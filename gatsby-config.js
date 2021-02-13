@@ -24,17 +24,19 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-prefetch-google-fonts",
+      resolve: "gatsby-plugin-webfonts",
       options: {
-        fonts: [
-          {
-            family: "Roboto"
-          },
-          {
-            family: "Work Sans",
-            variants: ["800"]
-          }
-        ]
+        fonts: {
+          google: [
+            {
+              family: "Roboto"
+            },
+            {
+              family: "Work Sans",
+              variants: ["800"]
+            }
+          ]
+        }
       }
     }
   ]

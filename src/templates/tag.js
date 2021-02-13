@@ -46,7 +46,7 @@ export default function TagTemplate({
           posts: {
             pathPrefix,
             filters: {
-              tag: { pathPrefixTag },
+              tag: { pathPrefix: pathPrefixTag }
             },
           },
         },
@@ -111,7 +111,7 @@ export const pageQuery = graphql`
             pathPrefix
             filters {
               tag {
-                pathPrefixTag
+                pathPrefix
               }
             }
           }
