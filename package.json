@@ -18,7 +18,7 @@
     "gatsby-transformer-sharp": "^2.5.10",
     "has-scroll-hook": "^1.0.3",
     "materialui-pagination-component": "^1.1.12",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.10.0",
     "yarn": "^1.22.4"
