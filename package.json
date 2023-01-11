@@ -14,7 +14,7 @@
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-sharp": "^2.6.18",
     "gatsby-source-filesystem": "^2.3.18",
-    "gatsby-transformer-remark": "^2.8.23",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.5.10",
     "has-scroll-hook": "^1.0.3",
     "materialui-pagination-component": "^1.1.12",
